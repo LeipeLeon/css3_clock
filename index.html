@@ -25,7 +25,7 @@
         var mins = new Date().getMinutes();
         var mdegree = mins * 6;
         var mrotate = "rotate(" + mdegree + "deg)";
-          
+
         $("#min").show().css({"-moz-transform" : mrotate, "-webkit-transform" : mrotate});
       }
 
@@ -36,7 +36,7 @@
         var mins = new Date().getMinutes();
         var hdegree = hours * 30 + (mins / 2);
         var hrotate = "rotate(" + hdegree + "deg)";
-      
+
         $("#hour").show().css({"-moz-transform" : hrotate, "-webkit-transform" : hrotate});
       }
 
@@ -44,15 +44,14 @@
       setMinuteHand();
       setHourdHand();
 
-    }); 
+    });
   </script>
 </head>
 <body>
-  <ul id="clock">	
+  <ul id="clock">
     <li id="sec"></li>
     <li id="hour"></li>
     <li id="min"></li>
   </ul>
 </body>
 </html>
-
