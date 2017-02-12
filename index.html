@@ -44,8 +44,19 @@
       setMinuteHand();
       setHourdHand();
 
+      var bg_image = window.location.search.split("bg=")[1]
+      console.log(bg_image)
+      if (bg_image != undefined) {
+
+        $('body').css({'background-image': 'url(' + bg_image + ')'})
+        $('body').css({'background-color': '#CCC'})
+        // document.write('<link rel="stylesheet" href="kdgm.css" />');
+      } else {
+        console.log('nope')
+      }
     });
-  </script>
+
+    </script>
 </head>
 <body>
   <ul id="clock">
