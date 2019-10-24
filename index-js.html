@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>CSS3/JS Clock demo</title>
+  <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+  <ul id="clock">
+    <li id="sec"></li>
+    <li id="hour"></li>
+    <li id="min"></li>
+  </ul>
+  <script type="text/javascript" language="javascript">
+
+    // Seconds
+    function setSecondHand(){
+      var milliseconds = new Date().getMilliseconds();
+      var seconds = new Date().getSeconds();
+      var sdegree = (seconds + (milliseconds / 1000) ) * 6;
+      var srotate = "rotate(" + sdegree + "deg)";
+      // console.log('setSecondHand', srotate)
+      var s = document.getElementById("sec")
+      s.style.webkitTransform = srotate;
+    }
+
+    // Minutes
+    function setMinuteHand() {
+      var mins = new Date().getMinutes();
+      var mdegree = mins * 6;
+      var mrotate = "rotate(" + mdegree + "deg)";
+      // console.log('setMinuteHand:' + mins +':'+ mdegree +':'+ mrotate)
+
+      var m = document.getElementById("min")
+      m.style.webkitTransform = mrotate;
+    }
+
+    // Hours
+    function setHourdHand() {
+      var hours = new Date().getHours();
+      var mins = new Date().getMinutes();
+      var hdegree = hours * 30 + (mins / 2);
+      var hrotate = "rotate(" + hdegree + "deg)";
+      // console.log('setHourdHand', hrotate)
+
+      var h = document.getElementById("hour")
+      h.style.webkitTransform = hrotate ;
+    }
+
+    // Init the clock
+
+    // var win = {
+    //     "width": 1280,
+    //     "height": 758
+    // };
+    // window.moveTo(0, 0);
+    // window.resizeTo(win.width, win.height);
+
+    console.log('init')
+
+    // window.addEventListener('DOMContentLoaded', function(e) {
+      console.log('addListener')
+      setInterval( function() {  setSecondHand();  }, 10 );
+      setInterval( function() {  setMinuteHand();  }, 500 );
+      setInterval( function() {  setHourdHand();   }, 1000 );
+      setMinuteHand();
+      setHourdHand();
+      // var bg_image = window.location.search.split("bg=")[1]
+      // console.log(bg_image)
+      // if (bg_image !== undefined) {
+      //
+      //   $('body').css({'background-image': 'url(' + bg_image + ')'})
+      //   $('body').css({'background-color': '#CCC'})
+      //   // document.write('<link rel="stylesheet" href="kdgm.css" />');
+      // } else {
+      //   console.log('nope')
+      // }
+    // })
+  </script>
+</body>
+</html>
