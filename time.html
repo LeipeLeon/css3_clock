@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <style>
+      body {
+        color: #f1f1f1;
+        overflow: hidden;
+
+        font-family: 'Fira Code', 'Cascadia Code', Arial;
+        font-size: 50pt;
+
+        height: 95%;
+        width: 100%;
+        text-align: center;
+      }
+      #clock-digital-wrapper {
+        background-color: red;
+        position: absolute;
+        bottom: 60px;
+        left: 420px;
+        right:420px;
+        height: 120px;
+        line-height: 125px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="clock-digital-wrapper">
+      <div id="clock-digital"></div>
+    </div>
+  </body>
+
+  <script>
+    var div = null;
+    var myData = null;
+    var diff = 0;
+    var hash = parseInt(window.location.hash.substr(1));
+    const timeObj = document.getElementById("clock-digital");
+    const border = document.getElementById("clock-digital-wrapper");
+
+    function updateTime() {
+
+      // if (!div) {
+      //   div = document.getElementById("dom-target");
+      //   myData = div.textContent;
+      //   their = new Date(myData);
+      //   now = new Date();
+      //   diff = now - their;
+      //   console.log("Time diff " + diff);
+      // }
+
+      now = new Date();
+      if (diff) {
+        now = new Date(now.valueOf() - diff);
+      }
+
+      if (hash > "") {
+        offset = now.valueOf() - diff + hash;
+        now = new Date(offset);
+      }
+
+      if (now.getSeconds() % (60 * 60) == 0)
+        border.style.backgroundColor = "#FFFFFF";
+      else if (now.getSeconds() % 60 == 0)
+        border.style.backgroundColor = "#00FF00";
+      else if (now.getSeconds() % 10 == 0)
+        border.style.backgroundColor = "#FF0000";
+      else if (now.getSeconds() % 5 == 0)
+        border.style.backgroundColor = "#0000FF";
+      else border.style.backgroundColor = "transparent";
+      const monthNames = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+
+      timeObj.innerText =
+        ("0" + now.getDate()).slice(-2) +
+        "-" +
+        monthNames[now.getMonth()] +
+        "-" +
+        now.getFullYear() +
+        " " +
+        ("0" + now.getHours()).slice(-2) +
+        ":" +
+        ("0" + now.getMinutes()).slice(-2) +
+        ":" +
+        ("0" + now.getSeconds()).slice(-2) +
+        "." +
+        ("0" + now.getMilliseconds().toString()).slice(-2);
+    }
+
+    setInterval(updateTime, 10);
+  </script>
+</html>
