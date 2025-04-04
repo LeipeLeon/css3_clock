@@ -49,30 +49,11 @@
     }
 
     // Init the clock
-
-    // var win = {
-    //     "width": 1280,
-    //     "height": 758
-    // };
-    // window.moveTo(0, 0);
-    // window.resizeTo(win.width, win.height);
-    // window.addEventListener('DOMContentLoaded', function(e) {
-      setInterval( function() {  setSecondHand();  }, 10 );
-      setInterval( function() {  setMinuteHand();  }, 500 );
-      setInterval( function() {  setHourdHand();   }, 1000 );
-      setMinuteHand();
-      setHourdHand();
-      // var bg_image = window.location.search.split("bg=")[1]
-      // console.log(bg_image)
-      // if (bg_image !== undefined) {
-      //
-      //   $('body').css({'background-image': 'url(' + bg_image + ')'})
-      //   $('body').css({'background-color': '#CCC'})
-      //   // document.write('<link rel="stylesheet" href="kdgm.css" />');
-      // } else {
-      //   console.log('nope')
-      // }
-    // })
+    setInterval( function() {  setSecondHand();  }, 10 );
+    setInterval( function() {  setMinuteHand();  }, 500 );
+    setInterval( function() {  setHourdHand();   }, 1000 );
+    setMinuteHand();
+    setHourdHand();
   </script>
   <audio autoplay loop>
     <source src="bipbop-stereo.wav" type="audio/wav">
